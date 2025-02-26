@@ -1,7 +1,7 @@
 /**
  * Author: Muneeb Azfar Nafees
  * 
- * Purpose of the class:
+ * Purpose of the class: Create a grid of random numbers and transpose it.
  */
 
 import java.util.Random;
