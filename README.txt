@@ -7,7 +7,7 @@ Files to Run:
 To replicate the important results, run the `Grid.java` file located in the `src` folder.
 
 Usage:
-The program takes at least three command line arguments:
+The program takes at least two command line arguments:
 1. Number of rows (integer)
 2. Number of columns (integer)
 3. Optional (default value 10): Range of random numbers (integer) 
