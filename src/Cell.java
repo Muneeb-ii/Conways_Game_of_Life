@@ -45,6 +45,7 @@ public class Cell {
      * @param status a boolean to specify if the Cell is alive or dead
      */
     public void setAlive(boolean status) {
+        this.alive = status;
     }
 
     /**
