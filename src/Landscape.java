@@ -1,4 +1,4 @@
-/*
+/**
  * Author: Muneeb Azfar Nafees
  * 
  * Purpose of class: This class represents a Landscape in the Game of Life.
@@ -21,14 +21,13 @@ public class Landscape {
      */
     private double initialChance;
     
-    /*
+    /**
      * The number of rows in the Landscape
      */
     private int rows;
 
-    /*
+    /**
      * The number of columns in the Landscape
-     * 
      */
     private int columns;
 
@@ -42,8 +41,8 @@ public class Landscape {
     public Landscape(int rows, int columns) {
         this.columns = columns;
         this.rows = rows;
-        initialChance = 0.5;
         landscape = new Cell[rows][columns];
+        initialChance = 0.0;
         reset();
     }
 
@@ -94,7 +93,12 @@ public class Landscape {
         landscape = new Cell[this.rows][this.columns];
         for (int i = 0; i < this.rows; i++) {
             for (int j = 0; j < this.columns; j++) {
-                landscape[i][j] = new Cell();
+                // Use the initialChance to decide if the cell is alive.
+                if (Math.random() < initialChance) {
+                    landscape[i][j] = new Cell(true);
+                } else {
+                    landscape[i][j] = new Cell(false);
+                }
             }
         }
     }
