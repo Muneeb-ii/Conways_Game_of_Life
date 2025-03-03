@@ -1,3 +1,10 @@
+/*
+ * Author: Muneeb Azfar Nafees
+ * 
+ * Purpose of class: This class represents a Cell in the Game of Life.
+ * 
+ */
+
 import java.util.ArrayList;
 
 public class Cell {
