@@ -85,6 +85,7 @@ public class Landscape {
      * @return the number of columns in the Landscape
      */
     public int getCols() {
+        return landscape[0].length;
     }
 
     /**
