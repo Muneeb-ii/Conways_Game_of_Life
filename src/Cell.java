@@ -68,5 +68,10 @@ public class Cell {
      * @return 1 if this Cell is alive, otherwise 0.
      */
     public String toString() {
+        if (alive){
+            return "1";
+        } else {
+            return "0";
+        }
     }
 }
