@@ -42,6 +42,9 @@ public class Landscape {
      * @param chance  the probability each individual Cell is initially alive
      */
     public Landscape(int rows, int columns, double chance) {
+        landscape = new Cell[rows][columns];
+        initialChance = chance;
+        reset();
     }
 
     /**
