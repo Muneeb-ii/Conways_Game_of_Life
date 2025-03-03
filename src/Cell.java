@@ -20,11 +20,11 @@ public class Cell {
      */
     public static void main (String[] args){
         Cell cell = new Cell();
-        System.out.println(cell.getAlive() == false);
+        System.out.println(cell.getAlive() + " == false");
         cell.setAlive(true);
-        System.out.println(cell.getAlive() == true);
+        System.out.println(cell.getAlive() + " == true");
         cell.setAlive(false);
-        System.out.println(cell.getAlive() == false);
+        System.out.println(cell.getAlive() + " == false");
         System.out.println(cell.toString().equals("0"));
     }
 
