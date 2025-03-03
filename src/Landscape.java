@@ -20,6 +20,17 @@ public class Landscape {
      * The original probability each individual Cell is alive
      */
     private double initialChance;
+    
+    /*
+     * The number of rows in the Landscape
+     */
+    private int rows;
+
+    /*
+     * The number of columns in the Landscape
+     * 
+     */
+    private int columns;
 
     /**
      * Constructs a Landscape of the specified number of rows and columns.
@@ -29,6 +40,8 @@ public class Landscape {
      * @param columns the number of columns in the Landscape
      */
     public Landscape(int rows, int columns) {
+        this.columns = columns;
+        this.rows = rows;
         landscape = new Cell[rows][columns];
         reset();
     }
@@ -42,9 +55,10 @@ public class Landscape {
      * @param chance  the probability each individual Cell is initially alive
      */
     public Landscape(int rows, int columns, double chance) {
+        this.columns = columns;
+        this.rows = rows;
         landscape = new Cell[rows][columns];
         initialChance = chance;
-        reset();
     }
 
     /**
@@ -52,6 +66,8 @@ public class Landscape {
      * in its initial construction.
      */
     public void reset() {
+        landscape = new Cell[this.rows][this.columns];
+        initialChance = 0.5;
     }
 
     /**
