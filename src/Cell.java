@@ -27,6 +27,7 @@ public class Cell {
      * @param status a boolean to specify if the Cell is initially alive
      */
     public Cell(boolean status) {
+        this.alive = status;
     }
 
     /**
@@ -35,6 +36,7 @@ public class Cell {
      * @return whether the cell is currently alive
      */
     public boolean getAlive() {
+        return alive;
     }
 
     /**
