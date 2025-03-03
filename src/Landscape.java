@@ -96,6 +96,7 @@ public class Landscape {
      * @return the Cell specified the given row and column
      */
     public Cell getCell(int row, int col) {
+        return landscape[row][col];
     }
 
     /**
