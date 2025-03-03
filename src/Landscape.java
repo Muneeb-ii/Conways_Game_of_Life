@@ -136,13 +136,14 @@ public class Landscape {
      * Returns a String representation of the Landscape.
      */
     public String toString() {
+        String stringRepresentation = "Current Landscape: \n";
         for (int i = 0; i < rows; i++) {
             for (int j = 0; j < columns; j++) {
-                System.out.print(landscape[i][j]);
+                stringRepresentation += landscape[i][j];
             }
-            System.out.print("\n");
+            stringRepresentation += "\n";
         }
-        return "Current Landscape";
+        return stringRepresentation;
     }
 
     /**
