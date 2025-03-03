@@ -42,6 +42,7 @@ public class Landscape {
     public Landscape(int rows, int columns) {
         this.columns = columns;
         this.rows = rows;
+        initialChance = 0.5;
         landscape = new Cell[rows][columns];
         reset();
     }
@@ -59,6 +60,30 @@ public class Landscape {
         this.rows = rows;
         landscape = new Cell[rows][columns];
         initialChance = chance;
+        reset();
+    }
+    
+    /**
+     * initializes the Cells using the given grid. 
+     * Cell at a given coordinate is initialized as alive if the corresponding 
+     * entry in the given grid is set to true.
+     * 
+     * @param grid    grid with boolean values
+     */
+    public Landscape(boolean[][] grid) {
+        // Set rows and columns based on the grid dimensions.
+        this.rows = grid.length;
+        this.columns = grid[0].length;
+        // Initialize the landscape array.
+        landscape = new Cell[rows][columns];
+        
+        // Iterate through each position in the grid.
+        for (int i = 0; i < rows; i++) {
+            for (int j = 0; j < columns; j++) {
+                // Initialize each cell based on the boolean grid.
+                landscape[i][j] = new Cell(grid[i][j]);
+            }
+        }
     }
 
     /**
@@ -67,7 +92,11 @@ public class Landscape {
      */
     public void reset() {
         landscape = new Cell[this.rows][this.columns];
-        initialChance = 0.5;
+        for (int i = 0; i < this.rows; i++) {
+            for (int j = 0; j < this.columns; j++) {
+                landscape[i][j] = new Cell();
+            }
+        }
     }
 
     /**
@@ -192,7 +221,7 @@ public class Landscape {
         
         return neighbors;
     }
-    
+
     /**
      * Advances the current Landscape by one step. 
      */
@@ -216,5 +245,50 @@ public class Landscape {
     }
 
     public static void main(String[] args) {
+        // Create a 5x3 Landscape.
+        Landscape testLandscape = new Landscape(5, 3);
+        
+        // Manually set some cells to be alive.
+        testLandscape.getCell(0, 0).setAlive(true);   // Top-left corner.
+        testLandscape.getCell(1, 1).setAlive(true);    // Center cell.
+        testLandscape.getCell(2, 2).setAlive(true);    // Top-right in middle row.
+        testLandscape.getCell(4, 2).setAlive(true);    // Bottom-right corner.
+        
+        // Print the Landscape.
+        System.out.println("Landscape:");
+        System.out.println(testLandscape);
+        
+        
+        // Top-left corner (0,0)
+        ArrayList<Cell> topLeftNeighbors = testLandscape.getNeighbors(0, 0);
+        System.out.println("Neighbors of cell (0,0): ");
+        for (int i = 0; i < topLeftNeighbors.size() ; i++) {
+            System.out.println(topLeftNeighbors.get(i));
+        }
+        
+        // Top edge (but not corner)
+        ArrayList<Cell> topEdgeNeighbors = testLandscape.getNeighbors(0, 1);
+        System.out.println("Neighbors of cell (0,1): ");
+        for (int i = 0; i < topEdgeNeighbors.size() ; i++) {
+            System.out.println(topEdgeNeighbors.get(i));
+        }
+        
+        // Middle cell (not on any edge), e.g., (2,1)
+        ArrayList<Cell> middleNeighbors = testLandscape.getNeighbors(2, 1);
+        System.out.println("Neighbors of cell (2,1): ");
+        for (int i = 0; i < middleNeighbors.size() ; i++) {
+            System.out.println(middleNeighbors.get(i));
+        }
+        
+        // Bottom-right corner (4,2)
+        ArrayList<Cell> bottomRightNeighbors = testLandscape.getNeighbors(4, 2);
+        System.out.println("Neighbors of cell (4,2): ");
+        for (int i = 0; i < bottomRightNeighbors.size() ; i++) {
+            System.out.println(bottomRightNeighbors.get(i));
+        }
+        
+        // test getRows and getCols
+        System.out.println("Rows: " + testLandscape.getRows() + " (expected 5)");
+        System.out.println("Columns: " + testLandscape.getCols() + " (expected 3)");
     }
 }
