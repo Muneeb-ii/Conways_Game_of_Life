@@ -18,6 +18,7 @@ public class Cell {
      * Constructs a dead cell.
      */
     public Cell() {
+        this.alive = false;
     }
 
     /**
