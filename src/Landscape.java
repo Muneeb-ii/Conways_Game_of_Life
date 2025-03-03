@@ -103,12 +103,13 @@ public class Landscape {
      * Returns a String representation of the Landscape.
      */
     public String toString() {
-        for (int i = 0; i < columns; i++) {
-            for (int j = 0; j < rows; j++) {
-                System.out.print(landscape[j][i]);
+        for (int i = 0; i < rows; i++) {
+            for (int j = 0; j < columns; j++) {
+                System.out.print(landscape[i][j]);
             }
             System.out.print("\n");
         }
+        return "Current Landscape";
     }
 
     /**
@@ -119,8 +120,79 @@ public class Landscape {
      * @return an ArrayList of the neighboring Cells to the specified location
      */
     public ArrayList<Cell> getNeighbors(int row, int col) {
+        ArrayList<Cell> neighbors = new ArrayList<>();
+        
+        // Top-left corner
+        if (row == 0 && col == 0) {
+            neighbors.add(landscape[row][col+1]);       // right
+            neighbors.add(landscape[row+1][col]);         // below
+            neighbors.add(landscape[row+1][col+1]);       // bottom-right
+        }
+        // Top-right corner
+        else if (row == 0 && col == columns - 1) {
+            neighbors.add(landscape[row][col-1]);         // left
+            neighbors.add(landscape[row+1][col]);         // below
+            neighbors.add(landscape[row+1][col-1]);       // bottom-left
+        }
+        // Bottom-left corner
+        else if (row == rows - 1 && col == 0) {
+            neighbors.add(landscape[row-1][col]);         // above
+            neighbors.add(landscape[row-1][col+1]);       // top-right
+            neighbors.add(landscape[row][col+1]);         // right
+        }
+        // Bottom-right corner
+        else if (row == rows - 1 && col == columns - 1) {
+            neighbors.add(landscape[row-1][col]);         // above
+            neighbors.add(landscape[row-1][col-1]);       // top-left
+            neighbors.add(landscape[row][col-1]);         // left
+        }
+        // Top edge (but not corners)
+        else if (row == 0) {
+            neighbors.add(landscape[row][col-1]);         // left
+            neighbors.add(landscape[row][col+1]);         // right
+            neighbors.add(landscape[row+1][col-1]);       // bottom-left
+            neighbors.add(landscape[row+1][col]);         // below
+            neighbors.add(landscape[row+1][col+1]);       // bottom-right
+        }
+        // Bottom edge (but not corners)
+        else if (row == rows - 1) {
+            neighbors.add(landscape[row][col-1]);         // left
+            neighbors.add(landscape[row][col+1]);         // right
+            neighbors.add(landscape[row-1][col-1]);       // top-left
+            neighbors.add(landscape[row-1][col]);         // above
+            neighbors.add(landscape[row-1][col+1]);       // top-right
+        }
+        // Left edge (but not corners)
+        else if (col == 0) {
+            neighbors.add(landscape[row-1][col]);         // above
+            neighbors.add(landscape[row-1][col+1]);       // top-right
+            neighbors.add(landscape[row][col+1]);         // right
+            neighbors.add(landscape[row+1][col]);         // below
+            neighbors.add(landscape[row+1][col+1]);       // bottom-right
+        }
+        // Right edge (but not corners)
+        else if (col == columns - 1) {
+            neighbors.add(landscape[row-1][col]);         // above
+            neighbors.add(landscape[row-1][col-1]);       // top-left
+            neighbors.add(landscape[row][col-1]);         // left
+            neighbors.add(landscape[row+1][col-1]);       // bottom-left
+            neighbors.add(landscape[row+1][col]);         // below
+        }
+        // General case (not on any boundary)
+        else {
+            neighbors.add(landscape[row-1][col-1]);       // top-left
+            neighbors.add(landscape[row-1][col]);         // above
+            neighbors.add(landscape[row-1][col+1]);       // top-right
+            neighbors.add(landscape[row][col-1]);         // left
+            neighbors.add(landscape[row][col+1]);         // right
+            neighbors.add(landscape[row+1][col-1]);       // bottom-left
+            neighbors.add(landscape[row+1][col]);         // below
+            neighbors.add(landscape[row+1][col+1]);       // bottom-right
+        }
+        
+        return neighbors;
     }
-
+    
     /**
      * Advances the current Landscape by one step. 
      */
