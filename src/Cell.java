@@ -8,11 +8,25 @@
 import java.util.ArrayList;
 
 public class Cell {
-
     /**
      * The status of the Cell.
      */
     private boolean alive;
+
+    /**
+     * Tests the Cell class.
+     * 
+     * @param args
+     */
+    public static void main (String[] args){
+        Cell cell = new Cell();
+        System.out.println(cell.getAlive() == false);
+        cell.setAlive(true);
+        System.out.println(cell.getAlive() == true);
+        cell.setAlive(false);
+        System.out.println(cell.getAlive() == false);
+        System.out.println(cell.toString().equals("0"));
+    }
 
     /**
      * Constructs a dead cell.
