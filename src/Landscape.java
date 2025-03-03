@@ -255,7 +255,6 @@ public class Landscape {
         testLandscape.getCell(4, 2).setAlive(true);    // Bottom-right corner.
         
         // Print the Landscape.
-        System.out.println("Landscape:");
         System.out.println(testLandscape);
         
         
