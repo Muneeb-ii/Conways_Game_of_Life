@@ -27,7 +27,10 @@ public class LifeSimulation {
         Landscape scape = new Landscape(rows, cols, chance);
         
         // Create the display with a default scale (adjust as needed).
-        LandscapeDisplay display = new LandscapeDisplay(scape, 6);
+        LandscapeDisplay display = new LandscapeDisplay(scape, 10);
+
+        // Prints the number of alive cells in the game before simulation
+        System.out.println("Number of alive cells before simulation: " + countLivingCells(scape));
         
         // Run the simulation for the specified number of iterations.
         for (int i = 0; i < iterations; i++) {
@@ -35,5 +38,26 @@ public class LifeSimulation {
             display.repaint();
             Thread.sleep(250);
         }
+
+        // Prints the number of alive cells in the game before simulation
+        System.out.println("Number of alive cells after simulation: " + countLivingCells(scape));
+    }
+
+    /**
+     * Counts the number of living cells in the given Landscape.
+     *
+     * @param scape the Landscape whose living cells will be counted
+     * @return the number of living cells
+     */
+    private static int countLivingCells(Landscape scape) {
+        int count = 0;
+        for (int i = 0; i < scape.getRows(); i++) {
+            for (int j = 0; j < scape.getCols(); j++) {
+                if (scape.getCell(i, j).getAlive()) {
+                    count++;
+                }
+            }
+        }
+        return count;
     }
 }
