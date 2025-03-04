@@ -261,7 +261,7 @@ public class Landscape {
         for (int x = 0; x < getRows(); x++) {
             for (int y = 0; y < getCols(); y++) {
                 g.setColor(getCell(x, y).getAlive() ? Color.BLACK : Color.gray);
-                g.fillOval(x * scale, y * scale, scale, scale);
+                g.fillOval(y * scale, x * scale, scale, scale);
             }
         }
     }
