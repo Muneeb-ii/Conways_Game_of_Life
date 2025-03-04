@@ -42,6 +42,16 @@ public class LifeSimulationGUI extends JFrame {
         JButton resumeButton = new JButton("Resume");
         JButton resetButton = new JButton("Reset");
         
+        // Change the background colour of each button to differentiate 
+        startButton.setBackground(Color.blue);
+        startButton.setOpaque(true);
+        resetButton.setBackground(Color.red);
+        resetButton.setOpaque(true);
+        pauseButton.setBackground(Color.yellow);
+        pauseButton.setOpaque(true);
+        resumeButton.setBackground(Color.green);
+        resumeButton.setOpaque(true);
+
         controlPanel.add(startButton);
         controlPanel.add(pauseButton);
         controlPanel.add(resumeButton);
