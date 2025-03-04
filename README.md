@@ -57,8 +57,8 @@ The integrated GUI allows dynamic interaction with the simulation, and all compo
 
 ### 1. Clone the Repository
 
-`git clone https://github.com/Muneeb-ii/Conways-Game-of-Life.git
-cd Conways-Game-of-Life`
+`git clone https://github.com/Muneeb-ii/Conways-Game-of-Life.git`
+`cd Conways-Game-of-Life`
 
 ### 2. Compile the Code:
 Ensure you have Java installed. Compile all the Java files:
