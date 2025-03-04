@@ -1,7 +1,7 @@
 /**
  * Author: Muneeb Azfar Nafees
  * 
- * Purpose of the class: 
+ * Purpose of the class: To create a graphical representation of a simulation of Game of Life.
 */
 
 import java.awt.Color;
