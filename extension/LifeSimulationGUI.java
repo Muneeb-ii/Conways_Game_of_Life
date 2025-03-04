@@ -95,6 +95,7 @@ public class LifeSimulationGUI extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 scape.reset();
                 display.getCanvas().repaint();
+                timer.stop();
             }
         });
         
