@@ -4,7 +4,6 @@
  * Purpose of the class: 
 */
 
-import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.Dimension;
@@ -22,7 +21,7 @@ import javax.swing.JPanel;
  * 
  * @author bseastwo
  */
-public class LandscapeDisplay {
+public class LandscapeDisplayGUI {
     JFrame win;
     protected Landscape scape;
     private LandscapePanel canvas;
@@ -34,7 +33,7 @@ public class LandscapeDisplay {
      * @param scape the Landscape to display
      * @param scale controls the relative size of the display
      */
-    public LandscapeDisplay(Landscape scape, int scale) {
+    public LandscapeDisplayGUI(Landscape scape, int scale) {
         // setup the window
         this.win = new JFrame("Game of Life");
         this.win.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -46,11 +45,7 @@ public class LandscapeDisplay {
         // put a buffer of two rows around the display grid
         this.canvas = new LandscapePanel((int) (this.scape.getCols() + 4) * this.gridScale,
                 (int) (this.scape.getRows() + 4) * this.gridScale);
-
-        // add the panel to the window, layout, and display
-        this.win.add(this.canvas, BorderLayout.CENTER);
-        this.win.pack();
-        this.win.setVisible(true);
+    
     }
 
     /**
@@ -80,6 +75,15 @@ public class LandscapeDisplay {
         } catch (IOException ioe) {
             System.out.println(ioe.getMessage());
         }
+    }
+
+    /**
+     * Returns the canvas field
+     * 
+     * @return canvas field for the object
+     */
+    public JPanel getCanvas() {
+        return this.canvas;
     }
 
     /**
