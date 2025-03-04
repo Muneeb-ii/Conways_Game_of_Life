@@ -4,7 +4,6 @@
  * Purpose of the class: Implement a GUI for a simulation of the Game of Life.
  * 
  */
-
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
@@ -12,7 +11,7 @@ import java.awt.event.*;
 public class LifeSimulationGUI extends JFrame {
 
     private Landscape scape;
-    private LandscapeDisplay display;
+    private LandscapeDisplayGUI display;
     private Timer timer;
 
     /**
@@ -26,13 +25,16 @@ public class LifeSimulationGUI extends JFrame {
         
         // Create the Landscape and its display
         scape = new Landscape(rows, cols, chance);
-        display = new LandscapeDisplay(scape, 10);
+        display = new LandscapeDisplayGUI(scape, 10); // This now only creates the canvas, not a separate window.
         
         // Set up the frame
         setTitle("Conway's Game of Life");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLayout(new BorderLayout());
 
+        // Add the drawing canvas from the display to the center of the GUI.
+        add(display.getCanvas(), BorderLayout.CENTER);
+        
         // Create a panel for control buttons
         JPanel controlPanel = new JPanel();
         JButton startButton = new JButton("Start");
@@ -51,7 +53,7 @@ public class LifeSimulationGUI extends JFrame {
         timer = new Timer(250, new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 scape.advance();
-                display.repaint();
+                display.getCanvas().repaint();
             }
         });
         
@@ -80,10 +82,9 @@ public class LifeSimulationGUI extends JFrame {
         
         // Reset button: reinitialize the Landscape to its original state
         resetButton.addActionListener(new ActionListener() {
-            @Override
             public void actionPerformed(ActionEvent e) {
                 scape.reset();
-                display.repaint();
+                display.getCanvas().repaint();
             }
         });
         
