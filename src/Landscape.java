@@ -54,8 +54,8 @@ public class Landscape {
      * @param columns the number of columns in the Landscape
      * @param chance  the probability each individual Cell is initially alive
      */
-    public Landscape(int rows, int columns, double chance) {
-        this.columns = columns;
+    public Landscape(int rows, int col, double chance) {
+        this.columns = col;
         this.rows = rows;
         landscape = new Cell[rows][columns];
         initialChance = chance;
