@@ -74,6 +74,25 @@ public class Cell {
      * @param neighbors An ArrayList of Cells
      */
     public void updateState(ArrayList<Cell> neighbors) {
+        int numOfAliveCells = 0;
+        for(Cell i : neighbors){
+            if(i.getAlive()){
+                numOfAliveCells++;
+            }
+        }
+        if (this.getAlive()){
+            if (numOfAliveCells == 2 || numOfAliveCells == 3){
+                this.setAlive(true);
+            }
+            else{
+                this.setAlive(false);
+            }
+        }
+        else {
+            if (numOfAliveCells == 3){
+                this.setAlive(true);
+            }
+        }
     }
 
     /**
