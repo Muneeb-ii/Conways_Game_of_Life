@@ -37,24 +37,20 @@ public class LifeSimulationGUI extends JFrame {
         
         // Create a panel for control buttons
         JPanel controlPanel = new JPanel();
-        JButton startButton = new JButton("Start");
+        JButton startButton = new JButton("Start\\Resume");
         JButton pauseButton = new JButton("Pause");
-        JButton resumeButton = new JButton("Resume");
         JButton resetButton = new JButton("Reset");
         
         // Change the background colour of each button to differentiate 
-        startButton.setBackground(Color.blue);
+        startButton.setBackground(Color.green);
         startButton.setOpaque(true);
         resetButton.setBackground(Color.red);
         resetButton.setOpaque(true);
         pauseButton.setBackground(Color.yellow);
         pauseButton.setOpaque(true);
-        resumeButton.setBackground(Color.green);
-        resumeButton.setOpaque(true);
 
         controlPanel.add(startButton);
         controlPanel.add(pauseButton);
-        controlPanel.add(resumeButton);
         controlPanel.add(resetButton);
         
         add(controlPanel, BorderLayout.SOUTH);
@@ -80,13 +76,6 @@ public class LifeSimulationGUI extends JFrame {
         pauseButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 timer.stop();
-            }
-        });
-        
-        // Resume button: start the timer again (if paused)
-        resumeButton.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                timer.start();
             }
         });
         
