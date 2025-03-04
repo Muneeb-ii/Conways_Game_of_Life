@@ -231,6 +231,23 @@ public class Landscape {
      * Advances the current Landscape by one step. 
      */
     public void advance() {
+        // Create a temporary grid and copy the current state.
+        Landscape tempGrid = new Landscape(this.getRows(), this.getCols());
+        for (int i = 0; i < this.getRows(); i++) {
+            for (int j = 0; j < this.getCols(); j++) {
+                tempGrid.getCell(i, j).setAlive(this.getCell(i, j).getAlive());
+            }
+        }
+    
+        // Update each cell in the temporary grid based on the neighbors in the original grid.
+        for (int i = 0; i < this.getRows(); i++) {
+            for (int j = 0; j < this.getCols(); j++) {
+                tempGrid.getCell(i, j).updateState(this.getNeighbors(i, j));
+            }
+        }
+    
+        // Replace the current grid with the updated grid.
+        this.landscape = tempGrid.landscape;
     }
 
     /**
