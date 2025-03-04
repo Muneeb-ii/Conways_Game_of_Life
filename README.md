@@ -56,24 +56,24 @@ The integrated GUI allows dynamic interaction with the simulation, and all compo
 ## How to Run the Project
 
 ### 1. Clone the Repository
-
-`git clone https://github.com/Muneeb-ii/Conways-Game-of-Life.git`
+  
+`git clone https://github.com/Muneeb-ii/Conways-Game-of-Life.git`  
 `cd Conways-Game-of-Life`
 
 ### 2. Compile the Code:
-Ensure you have Java installed. Compile all the Java files:
+Ensure you have Java installed. Compile all the Java files:  
 `javac *.java`
 
 ### 3. Run the Simulation:
 
 **Command-Line Mode:**
-To run a simulation with user-defined parameters, use:
-`java LifeSimulation <rows> <cols> <chance> <iterations>`
-For example:
+To run a simulation with user-defined parameters, use:  
+`java LifeSimulation <rows> <cols> <chance> <iterations>`  
+For example:  
 `java LifeSimulation 100 100 0.3 1000`
 
 **GUI Mode:**
-To run the interactive GUI version:
+To run the interactive GUI version:  
 `java LifeSimulationGUI`
 
 Upon startup, you will be prompted to enter the number of rows, columns, and the initial probability. The simulation window will then display the evolving grid along with control buttons to start, pause, and reset the simulation.
